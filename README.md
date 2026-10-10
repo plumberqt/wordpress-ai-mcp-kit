@@ -186,6 +186,8 @@ Everything you need, with links and what each piece actually does.
 wordpress-ai-mcp-kit/
 ├── README.md                     ← you are here
 ├── LICENSE                       ← GPL-2.0
+├── WordPress-AI-MCP-Setup-Guide.docx  ← the whole guide as a Word document
+├── build_mcp_guide_docx.py       ← script that generates the .docx (python-docx)
 ├── ai-office-hours.zip           ← the ready-to-install plugin (upload this in WP)
 ├── plugin/
 │   └── ai-office-hours/
