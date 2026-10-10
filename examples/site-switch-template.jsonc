@@ -1,0 +1,42 @@
+{
+  // SITE-SWITCH TEMPLATE — copy this into each project's .opencode/opencode.json,
+  // then change ONLY the values marked "CHANGE ME".
+  //
+  // On the new site, do the same WordPress steps:
+  //   1. MCP Adapter + Enable Abilities for MCP plugins
+  //   2. an `ai-agent` user (Editor) + an Application Password
+  //   3. AI Office Hours plugin (set its window/off-day)
+  //   4. save the password as a NEW env var (e.g. WP_APP_PASSWORD_SITE2)
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "wordpress": {
+      "type": "local",
+      "command": ["npx", "-y", "@automattic/mcp-wordpress-remote"],
+      "enabled": true,
+      "timeout": 30000,
+      "environment": {
+        // CHANGE ME #1 — the new site's endpoint URL:
+        "WP_API_URL": "https://NEW-SITE.com/wp-json/mcp/mcp-adapter-default-server",
+        // CHANGE ME #2 — the new site's AI username:
+        "WP_API_USERNAME": "ai-agent",
+        // CHANGE ME #3 — the new site's application password env var name.
+        // (If you reuse WP_APP_PASSWORD, the same password is used for every site.)
+        "WP_API_PASSWORD": "{env:WP_APP_PASSWORD_SITE2}",
+        "OAUTH_ENABLED": "false"
+      }
+    }
+  },
+  "permission": {
+    "wordpress_*": "ask",
+    "bash": {
+      "*": "ask",
+      "rm *": "deny",
+      "del *": "deny",
+      "rmdir *": "deny",
+      "Remove-Item *": "deny",
+      "format *": "deny"
+    },
+    "external_directory": "ask",
+    "webfetch": "ask"
+  }
+}
